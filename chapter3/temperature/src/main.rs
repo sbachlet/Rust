@@ -11,10 +11,12 @@ fn main() {
     println!("0 Celcius is {} Farenheight", freezing)
 }
 
+const OFFSET: f32 = 32.0;
+
 fn to_celcius(temp: f32) -> f32 {
-    (temp - 32.0) * (5.0/9.0)
+    (temp - OFFSET) * (5.0/9.0)
 }
 
 fn to_farenheight(temp: f32) -> f32 {
-    (temp * (9.0/5.0)) + 32.0
+    (temp * (9.0/5.0)) + OFFSET
 }
