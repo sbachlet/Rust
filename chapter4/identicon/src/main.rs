@@ -52,11 +52,12 @@ fn main() {
     let digest: String = md5_hash(&buffer);
     let digest: &[u8] = digest.as_bytes();
     // Chunk the hash into blocks of 3
-    let mut chunked_digest:  std::slice::Chunks<'_, u8> = digest[..].chunks(3);
+    let mut chunked_digest:  std::slice::Chunks<'_, u8> 
+        = digest[..].chunks(3);
     // Convert the first 5 chunks into a mirrored grid
     let grid: [[u8; 5]; 5] = mirror_grid(&mut chunked_digest);
     // Grab the first 3 values of the digest for the color
-    let _color = &digest[..3];
+    let _color: &[u8] = &digest[..3];
 
     println!("{:?}", grid)
 }
