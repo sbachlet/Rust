@@ -1,15 +1,16 @@
 use std::collections::HashMap;
+use rand::Rng;
 
 fn main() {
     let mut v = vec![];
-    for i in 1..101 {
-        v.push(i);
+    for _i in 1..101 {
+        v.push(rand::thread_rng().gen_range(0, 10));
     };
 
     // be sure to make them references because
     // we dont want to take ownership
     println!("{}", average(&v));
-    println!("{}", median(&v));
+    println!("{}", median(&mut v));
     println!("{}", mode(&v));
 }
 
@@ -24,7 +25,8 @@ fn average(v: &std::vec::Vec<i32>) -> f32 {
     x / length
 }
 
-fn median(v: &std::vec::Vec<i32>) -> i32 {
+fn median(v: &mut std::vec::Vec<i32>) -> i32 {
+    v.sort();
     v[v.len()/2]
 }
 
